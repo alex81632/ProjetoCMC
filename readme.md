@@ -1,4 +1,4 @@
-# Three.js Journey
+# Projeto CMC-30
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
