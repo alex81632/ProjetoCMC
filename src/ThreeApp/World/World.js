@@ -28,6 +28,25 @@ export default class World
             this.fox.update()
         if(this.mainCharacter)
             this.mainCharacter.update()
+
+        // Controls Exemple
+
+        if(this.threeApp.controls.keyMap['ArrowUp'])
+        {
+            console.log('ArrowUp')
+        }
+        if(this.threeApp.controls.keyMap['ArrowDown'])
+        {
+            console.log('ArrowDown')
+        }
+        if(this.threeApp.controls.keyMap['ArrowLeft'])
+        {
+            console.log('ArrowLeft')
+        }
+        if(this.threeApp.controls.keyMap['ArrowRight'])
+        {
+            console.log('ArrowRight')
+        }
     }
 
     destroy()
