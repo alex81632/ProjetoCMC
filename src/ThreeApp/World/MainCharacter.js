@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import ThreeApp from '../ThreeApp.js'
+import * as CANNON from 'cannon-es'
 
 export default class MainCharacter
 {
@@ -9,8 +10,9 @@ export default class MainCharacter
         this.scene = this.threeApp.scene
         this.resources = this.threeApp.resources
         this.time = this.threeApp.time
+        this.physicsWorld = this.threeApp.physicsWorld;
         this.debug = this.threeApp.debug
-
+        
         // Debug
         if(this.debug.active)
         {
@@ -21,9 +23,10 @@ export default class MainCharacter
         this.resource = this.resources.items.mainCharacterModel
 
         this.setModel()
+        this.setBody()
         this.setAnimation()
     }
-
+    
     setModel()
     {
         this.model = this.resource.scene
@@ -39,7 +42,15 @@ export default class MainCharacter
             }
         })
     }
+    setBody(){
+        this.body = new CANNON.Body({
+            mass:5,
+            shape: new CANNON.Box(new CANNON.Vec3(.4,.5,.43))
+        })
+        this.body.position.set(0,1,0)
 
+        this.physicsWorld.addBody(this.body)
+    }
     setAnimation()
     {
         this.animation = {}
@@ -103,6 +114,7 @@ export default class MainCharacter
 
     update()
     {
+        this.model.position.copy(this.body.position).add(new THREE.Vector3(0,-0.5,0))
         this.animation.mixer.update(this.time.delta * 0.001)
     }
 }

@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import Environment from './Environment.js'
 import Floor from './Floor.js'
 import MainCharacter from './MainCharacter.js'
+//import test from './test.js'
 
 export default class World
 {
@@ -19,7 +20,9 @@ export default class World
             this.floor = new Floor()
             this.mainCharacter = new MainCharacter()
             this.environment = new Environment()
+            //this.test = new test()
         })
+
     }
 
     update()
@@ -28,7 +31,11 @@ export default class World
             this.fox.update()
         if(this.mainCharacter)
             this.mainCharacter.update()
-
+        /*if (this.test){
+            this.test.update()
+            console.log("ok")
+        }*/
+            
         // Controls Exemple
 
         if(this.threeApp.controls.keyMap['ArrowUp'])

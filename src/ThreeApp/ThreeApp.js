@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import CANNON from 'cannon'
 
 import Debug from './Utils/Debug.js'
 import Sizes from './Utils/Sizes.js'
@@ -10,6 +9,8 @@ import Renderer from './Renderer.js'
 import World from './World/World.js'
 import Resources from './Utils/Resources.js'
 import sources from './sources.js'
+import PhysicsWorld from './World/PhysicsWorld.js'
+import CannonDebugger from 'cannon-es-debugger'
 
 let instance = null
 
@@ -40,6 +41,8 @@ export default class ThreeApp
         this.renderer = new Renderer()
         this.world = new World()
         this.controls = new Controls()
+        this.physicsWorld = new PhysicsWorld()
+        this.physicsDebug = new CannonDebugger(this.scene,this.physicsWorld.world,{})
 
         // Resize event
         this.sizes.on('resize', () =>
@@ -65,6 +68,11 @@ export default class ThreeApp
         this.camera.update()
         this.world.update()
         this.renderer.update()
+        this.physicsWorld.update()
+        if (this.debug.active){
+            this.physicsDebug.update()
+        }
+        
     }
 
     destroy()
@@ -81,4 +89,5 @@ export default class ThreeApp
         if(this.debug.active)
             this.debug.ui.destroy()
     }
+    
 }
