@@ -3,6 +3,8 @@ import * as THREE from 'three'
 import Environment from './Environment.js'
 import Floor from './Floor.js'
 import MainCharacter from './MainCharacter.js'
+import City from './City.js'
+import Physics from './physics.js'
 
 export default class World
 {
@@ -16,37 +18,21 @@ export default class World
         this.resources.on('ready', () =>
         {
             // Setup
-            this.floor = new Floor()
+            // this.floor = new Floor()
             this.mainCharacter = new MainCharacter()
             this.environment = new Environment()
+            this.city = new City()
+            this.physics = new Physics()
         })
     }
 
     update()
     {
-        if(this.fox)
-            this.fox.update()
         if(this.mainCharacter)
             this.mainCharacter.update()
 
-        // Controls Exemple
-
-        if(this.threeApp.controls.keyMap['ArrowUp'])
-        {
-            console.log('ArrowUp')
-        }
-        if(this.threeApp.controls.keyMap['ArrowDown'])
-        {
-            console.log('ArrowDown')
-        }
-        if(this.threeApp.controls.keyMap['ArrowLeft'])
-        {
-            console.log('ArrowLeft')
-        }
-        if(this.threeApp.controls.keyMap['ArrowRight'])
-        {
-            console.log('ArrowRight')
-        }
+        if(this.physics)
+            this.physics.update()
     }
 
     destroy()

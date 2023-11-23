@@ -19,6 +19,7 @@ export default class MainCharacter
 
         // Resource
         this.resource = this.resources.items.mainCharacterModel
+        console.log(this.resource)
 
         this.setModel()
         this.setAnimation()
@@ -51,8 +52,6 @@ export default class MainCharacter
         this.animation.actions = {}
 
         console.log(this.resource.animations)
-
-
         
         this.animation.actions.rightFoward = this.animation.mixer.clipAction(this.resource.animations[0])
         this.animation.actions.leftFoward = this.animation.mixer.clipAction(this.resource.animations[1])

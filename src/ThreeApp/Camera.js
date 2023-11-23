@@ -11,17 +11,27 @@ export default class Camera
         this.scene = this.threeApp.scene
         this.canvas = this.threeApp.canvas
 
+        this.cos45 = Math.cos(45)
+        this.vel = 0.2
+
         this.setInstance()
-        this.setControls()
+        // this.setControls()
     }
 
     setInstance()
     {
         this.cameraHeight = 5
         this.aspectRatio = this.sizes.width / this.sizes.height
-        this.instance = new THREE.OrthographicCamera(-this.aspectRatio*this.cameraHeight, this.aspectRatio*this.cameraHeight, this.cameraHeight, -this.cameraHeight, 0.1, 100)
-        this.instance.position.set(6, 6, 6)
+        this.posVector = new THREE.Vector3(20, 20, 20)
+        this.instance = new THREE.OrthographicCamera(-this.aspectRatio*this.cameraHeight, this.aspectRatio*this.cameraHeight, this.cameraHeight, -this.cameraHeight, 0.001, 100)
+        this.instance.position.set(this.posVector.x, this.posVector.y, this.posVector.z)
+        this.instance.lookAt(new THREE.Vector3(0, 0, 0))
         this.scene.add(this.instance)
+    }
+
+    setPosition(_x, _y, _z)
+    {
+        this.instance.position.set(this.posVector.x + _x, this.posVector.y + _y, this.posVector.z + _z)
     }
 
     setControls()
@@ -42,6 +52,8 @@ export default class Camera
 
     update()
     {
-        this.controls.update()
+        // this.controls.update()
+
+        
     }
 }

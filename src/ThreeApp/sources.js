@@ -26,5 +26,10 @@ export default [
         name: 'mainCharacterModel',
         type: 'gltfModel',
         path: 'models/MainCharacter/MainCharacter.gltf'
+    },
+    {
+        name: 'cityModel',
+        type: 'gltfModel',
+        path: 'models/city/city_final.gltf'
     }
 ]
