@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import ThreeApp from '../ThreeApp.js'
 import * as CANNON from 'cannon-es'
 import { threeToCannon, ShapeType } from 'three-to-cannon';
-// import CannonDebugger from 'cannon-es-debugger';
+import CannonDebugger from 'cannon-es-debugger';
 
 export default class Physics
 {
@@ -33,6 +33,7 @@ export default class Physics
         if(this.debug.active)
         {
             this.debugFolder = this.debug.ui.addFolder('cars')
+            this.CannonDebugger = new CannonDebugger(this.scene, this.world)
         }
 
         // this.CannonDebugger = new CannonDebugger(this.scene, this.world)
@@ -108,8 +109,7 @@ export default class Physics
 
     update()
     {
-
-        //this.CannonDebugger.update()
+        if(this.debug.active) this.CannonDebugger.update()
         if (this.constraintLB != null) this.updateControls()
 
         const elapsedTime = this.clock.getElapsedTime()

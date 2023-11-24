@@ -20,9 +20,10 @@ export default class World
             // Setup
             // this.floor = new Floor()
             this.mainCharacter = new MainCharacter()
-            this.environment = new Environment()
+            
             this.city = new City()
             this.physics = new Physics(new THREE.Vector3(83,2,0))
+            this.environment = new Environment()
         })
     }
 
