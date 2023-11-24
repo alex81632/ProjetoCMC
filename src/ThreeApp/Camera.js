@@ -18,6 +18,12 @@ export default class Camera
         // this.setControls()
     }
 
+    inverterCamera()
+    {
+        this.posVector.x = -this.posVector.x
+        this.posVector.z = -this.posVector.z
+    }
+
     setInstance()
     {
         this.cameraHeight = 5

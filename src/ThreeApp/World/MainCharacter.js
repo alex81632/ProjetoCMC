@@ -51,7 +51,7 @@ export default class MainCharacter
         // Actions
         this.animation.actions = {}
 
-        console.log(this.resource.animations)
+        //console.log(this.resource.animations)
         
         this.animation.actions.rightFoward = this.animation.mixer.clipAction(this.resource.animations[0])
         this.animation.actions.leftFoward = this.animation.mixer.clipAction(this.resource.animations[1])

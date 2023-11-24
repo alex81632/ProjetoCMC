@@ -1,6 +1,4 @@
 import * as THREE from 'three'
-import CANNON from 'cannon'
-
 import Debug from './Utils/Debug.js'
 import Sizes from './Utils/Sizes.js'
 import Time from './Utils/Time.js'
@@ -52,6 +50,11 @@ export default class ThreeApp
         {
             this.update()
         })
+    }
+
+    inverterCamera()
+    {
+        return this.camera.inverterCamera()
     }
 
     resize()

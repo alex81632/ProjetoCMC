@@ -17,3 +17,23 @@ body
     left: 0;
     outline: none;
 }
+
+button
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50; /* Cor de fundo verde */
+    color: white; /* Cor do texto branco */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+}
+
+button:hover {
+    background-color: #45a049; /* Mudança de cor ao passar o mouse */
+}
