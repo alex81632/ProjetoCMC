@@ -19,7 +19,6 @@ export default class MainCharacter
 
         // Resource
         this.resource = this.resources.items.mainCharacterModel
-        console.log(this.resource)
 
         this.setModel()
         this.setAnimation()
@@ -79,25 +78,6 @@ export default class MainCharacter
             this.debugFolder.add(debugObject, 'playAll')
             this.debugFolder.add(debugObject, 'stopAllSmoothly')
         }
-
-        // Se quiser trocar entre animaçoes, descomente o codigo abaixo e comente o codigo acima ############
-        
-        // this.animation.actions.current = this.animation.actions.idle
-        // this.animation.actions.current.play()
-
-        // // Play the action
-        // this.animation.play = (name) =>
-        // {
-        //     const newAction = this.animation.actions[name]
-        //     const oldAction = this.animation.actions.current
-
-        //     newAction.reset()
-        //     newAction.play()
-        //     newAction.crossFadeFrom(oldAction, 1)
-
-        //     this.animation.actions.current = newAction
-        // }
-
     }
 
     update()

@@ -22,7 +22,7 @@ export default class World
             this.mainCharacter = new MainCharacter()
             this.environment = new Environment()
             this.city = new City()
-            this.physics = new Physics(new THREE.Vector3(0,2,0))
+            this.physics = new Physics(new THREE.Vector3(83,2,0))
         })
     }
 

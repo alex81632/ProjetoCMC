@@ -10,7 +10,7 @@ export default class City
         this.resources = this.threeApp.resources
 
         this.spawnPoints = [
-            new CANNON.Vec3(0,1,0),
+            new CANNON.Vec3(83,1,0),
             new CANNON.Vec3(-1.2,1,-39.48),
 
         ] //list of checkpoints

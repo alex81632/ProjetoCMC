@@ -37,11 +37,7 @@ export default class Physics
 
         this.CannonDebugger = new CannonDebugger(this.scene, this.world)
 
-        this.main = this.resources.items.mainCharacterModel.scene.children[0]
-        this.main.rotation.x = -Math.PI / 2;
-
-        this.lWheel = this.main.children[0]
-        this.rWheel = this.main.children[1]
+        this.main = this.resources.items.mainCharacterModel.scene
 
         this.timeStep = 1 / 60
         this.clock = new THREE.Clock()
@@ -88,6 +84,9 @@ export default class Physics
         {
             if (this.fowardVel > 0) this.fowardVel -= 0.25
             if (this.fowardVel < 0) this.fowardVel += 0.25
+            this.threeApp.world.mainCharacter.animation.playAll()
+        }else{
+            this.threeApp.world.mainCharacter.animation.stopAllSmoothly()
         }
 
         if (!turning)
@@ -172,12 +171,6 @@ export default class Physics
 
     setBody(x,y,z) {
 
-        /*this.constraintLB = null
-        this.constraintRB = null
-        this.constraintLF = null
-        this.constraintRF = null
-        this.body = null*/
-
         const carSize = 0.5
         const wheelSize = 0.15
 
@@ -187,12 +180,12 @@ export default class Physics
         wheelMaterial.friction = 0.15
         wheelMaterial.restitution = 0.25
 
-        const carBodyMesh = this.main
-        //this.scene.add(carBodyMesh)
-        this.carBodyMesh = this.main
+
+        // CAR BODY
+        //this.scene.add(this.main)
+        this.carBodyMesh = this.main.children[0]
         this.carBodyMesh.position.x = x; this.carBodyMesh.position.y = y; this.carBodyMesh.position.z = z;
-        //this.scene.add(this.carBodyMesh)
-        console.log(this.carBodyMesh.position)
+        
 
         // POSSIVELMENTE ADD CAMERA TO CAR
 
@@ -224,7 +217,6 @@ export default class Physics
         wheelLFMesh.position.x = - carSize / 2 + x
         wheelLFMesh.position.y = carHeight - wheelSize / 2
         wheelLFMesh.position.z = - carSize / 2 + z
-         this.scene.add(wheelLFMesh)
 
         const wheelLFShape = new CANNON.Sphere(wheelSize / 2)
         const wheelLFBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
@@ -250,7 +242,6 @@ export default class Physics
         wheelRFMesh.position.y = carHeight - wheelSize / 2
         wheelRFMesh.position.x = carSize / 2 + x
         wheelRFMesh.position.z = - carSize / 2 + z
-        this.scene.add(wheelRFMesh)
         
         const wheelRFShape = new CANNON.Sphere(wheelSize / 2)
         const wheelRFBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
@@ -276,7 +267,7 @@ export default class Physics
         wheelLBMesh.position.y = carHeight - wheelSize / 2
         wheelLBMesh.position.x = - carSize / 2 + x
         wheelLBMesh.position.z = carSize / 2 + z
-        this.scene.add(wheelLBMesh)
+
         const wheelLBShape = new CANNON.Sphere(wheelSize / 2)
         const wheelLBBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
         wheelLBBody.addShape(wheelLBShape)
@@ -302,7 +293,7 @@ export default class Physics
         wheelRBMesh.position.x = carSize / 2 + x
         wheelRBMesh.position.z = carSize / 2 + z
         wheelRBMesh.castShadow = true
-        this.scene.add(wheelRBMesh)
+
         const wheelRBShape = new CANNON.Sphere(wheelSize / 2)
         const wheelRBBody = new CANNON.Body({ mass: 1, material: wheelMaterial })
         wheelRBBody.addShape(wheelRBShape)
