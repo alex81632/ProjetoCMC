@@ -1,6 +1,4 @@
 import * as THREE from 'three'
-import CANNON from 'cannon'
-
 import Debug from './Utils/Debug.js'
 import Sizes from './Utils/Sizes.js'
 import Time from './Utils/Time.js'
@@ -40,7 +38,6 @@ export default class ThreeApp
         this.renderer = new Renderer()
         this.world = new World()
         this.controls = new Controls()
-
         // Resize event
         this.sizes.on('resize', () =>
         {
@@ -52,6 +49,8 @@ export default class ThreeApp
         {
             this.update()
         })
+
+
     }
 
     resize()
@@ -65,6 +64,7 @@ export default class ThreeApp
         this.camera.update()
         this.world.update()
         this.renderer.update()
+    
     }
 
     destroy()
