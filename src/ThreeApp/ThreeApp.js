@@ -8,6 +8,7 @@ import Renderer from './Renderer.js'
 import World from './World/World.js'
 import Resources from './Utils/Resources.js'
 import sources from './sources.js'
+import Dialogues from './World/Dialogues.js'
 
 let instance = null
 
@@ -29,6 +30,7 @@ export default class ThreeApp
         this.canvas = _canvas
 
         // Setup
+        this.start = true
         this.debug = new Debug()
         this.sizes = new Sizes()
         this.time = new Time()
@@ -50,7 +52,10 @@ export default class ThreeApp
             this.update()
         })
 
-
+        this.dialogues = new Dialogues()
+        //Teste: já carrega o primeiro
+        this.dialogues.showTextbox()
+        this.dialogues.updateDialogue(this.dialogues.dialogueList[0].d)
     }
 
     inverterCamera()
@@ -62,6 +67,7 @@ export default class ThreeApp
     {
         this.camera.resize()
         this.renderer.resize()
+        //this.dialogues.resize()
     }
 
     update()
@@ -69,6 +75,7 @@ export default class ThreeApp
         this.camera.update()
         this.world.update()
         this.renderer.update()
+        this.dialogues.inputCheck()
     
     }
 

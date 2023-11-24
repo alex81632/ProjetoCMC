@@ -43,8 +43,13 @@ export default class City
         if (!this.threeApp.world.physics.body) return
         for (let i = 0; i < this.spawnPoints.length; i++){
             let dist = this.threeApp.world.physics.body.position.distanceTo(this.spawnPoints[i])
-            if (dist < 5){
+            if (dist < 3){
                 this.currentSpawn = this.spawnPoints[i]
+                //EVENT CHECK: NEW DIALOGUE IF ARRIVED AT HIS DAUGHTER'S HOUSE (DO ONCE)
+                if (this.threeApp.dialogues.dialogueIterate == 4 && i == 1){
+                    this.threeApp.dialogues.updateDialogue(this.threeApp.dialogues.dialogueList[this.threeApp.dialogues.dialogueIterate].d)
+                    this.threeApp.dialogues.showTextbox()
+                }
             }
         }
 
