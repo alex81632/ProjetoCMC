@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import ThreeApp from '../ThreeApp.js'
 import * as CANNON from 'cannon-es'
 import { threeToCannon, ShapeType } from 'three-to-cannon';
-import CannonDebugger from 'cannon-es-debugger';
+// import CannonDebugger from 'cannon-es-debugger';
 
 export default class Physics
 {
@@ -23,7 +23,7 @@ export default class Physics
         this.constraintLF = null
         this.constraintRF = null
         this.body = null
-        this.dbg = new CannonDebugger(this.scene,this.world)
+        // this.dbg = new CannonDebugger(this.scene,this.world)
 
         this.empty = null
 
@@ -35,7 +35,7 @@ export default class Physics
             this.debugFolder = this.debug.ui.addFolder('cars')
         }
 
-        this.CannonDebugger = new CannonDebugger(this.scene, this.world)
+        // this.CannonDebugger = new CannonDebugger(this.scene, this.world)
 
         this.main = this.resources.items.mainCharacterModel.scene
 
@@ -109,7 +109,7 @@ export default class Physics
     update()
     {
 
-        this.CannonDebugger.update()
+        //this.CannonDebugger.update()
         if (this.constraintLB != null) this.updateControls()
 
         const elapsedTime = this.clock.getElapsedTime()
@@ -144,8 +144,8 @@ export default class Physics
         }
 
         this.animation.mixer.update(deltaTime)
-        if (this.threeApp.debug.active)
-            this.dbg.update()
+        // if (this.threeApp.debug.active)
+            // this.dbg.update()
     }
 
     setAmbient()
