@@ -375,7 +375,7 @@ export default class Physics
     setCars() {
         const carsModel = this.resources.items.cars;
     
-        let length = 24;
+        let length = 23;
     
         this.scene.add(carsModel.scene)
     

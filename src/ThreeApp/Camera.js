@@ -16,12 +16,22 @@ export default class Camera
 
         this.setInstance()
         // this.setControls()
+
+        // Add event listener for keydown events
+        document.addEventListener('keydown', (event) => {
+            // Check if the pressed key is the "Enter" key (key code 13)
+            if (event.key === 'Enter') {
+                // Hide the start menu when the "Enter" key is pressed
+                this.inverterCamera();
+            }
+        });
     }
 
     inverterCamera()
     {
         this.posVector.x = -this.posVector.x
         this.posVector.z = -this.posVector.z
+        console.log(this.posVector)
     }
 
     setInstance()

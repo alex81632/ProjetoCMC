@@ -30,11 +30,11 @@ export default [
     {
         name: 'cityModel',
         type: 'gltfModel',
-        path: 'models/city/city-ramps2.gltf'
+        path: 'models/city/city_final.gltf'
     },
     {
         name: 'cars',
         type: 'gltfModel',
-        path: 'models/city/city-cars.gltf'
+        path: 'models/city/city-cars2.gltf'
     }
 ]
