@@ -38,7 +38,6 @@ export default class ThreeApp
         this.renderer = new Renderer()
         this.world = new World()
         this.controls = new Controls()
-
         // Resize event
         this.sizes.on('resize', () =>
         {
@@ -50,6 +49,8 @@ export default class ThreeApp
         {
             this.update()
         })
+
+
     }
 
     inverterCamera()
@@ -68,6 +69,7 @@ export default class ThreeApp
         this.camera.update()
         this.world.update()
         this.renderer.update()
+    
     }
 
     destroy()
